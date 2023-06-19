@@ -33,6 +33,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CalculoCDB.Angular", "Calcu
 		SlnRelativePath = "CalculoCDB.Angular\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculoCDB.API", "CalculoCDB.API\CalculoCDB.API.csproj", "{0ADFA869-1CE2-4484-BD1B-17898531B702}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D14895F8-95A1-4CAC-B956-4673D4840730}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D14895F8-95A1-4CAC-B956-4673D4840730}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{D14895F8-95A1-4CAC-B956-4673D4840730}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{0ADFA869-1CE2-4484-BD1B-17898531B702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADFA869-1CE2-4484-BD1B-17898531B702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADFA869-1CE2-4484-BD1B-17898531B702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADFA869-1CE2-4484-BD1B-17898531B702}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

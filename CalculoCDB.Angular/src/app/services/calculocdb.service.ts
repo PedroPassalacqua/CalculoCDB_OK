@@ -13,7 +13,7 @@ export class CalculocdbService {
   constructor(private http: HttpClient) { }
     
   getcalculocdb(valor_inicial:any, num_meses:any):Observable<calculo[]> {
-    return this.http.get<calculo[]>('https://localhost:7071/api/CalculoCdb?valor_inicial='+valor_inicial+'&num_meses='+num_meses);
+    return this.http.get<calculo[]>('https://localhost:7071/api/CalculoCdb?valor_inicial='+valor_inicial+'&num_meses='+num_meses,httpOptions);
   } 
 }
 

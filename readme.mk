@@ -40,3 +40,18 @@ INSTRUÇÕES PARA EXECUÇÃO DOS TESTES:
 - utilizar a aplicação 
 
 - Para rodar os testes automatizados executar a opção Terminal>New Terminal e digitar o comando "npm test"
+
+
+********************************************************************************************
+
+        NOTAS DE DESENVOLVIMENTO
+
+Durante o desenvolvimento ocorre erro de integração necessitando habilitar o CORS. 
+Devido a isso desenvolvemos primeiramente o projeto API CalculoCDB em .NET 4.7.2, e depois 
+reimplementado em .NET 6.0, onde foi possível resolver o problema.
+Após o término, Ainda criei o projeto CalculoCDB.API em 4.7.2 para tentar habilitar o CORS 
+no 4.7.2 sem sucesso por falta de tempo e falta de informação disponível.
+Qualquer forma sendo aceita versão 4.7.2 ou superior, a versão .NET 6.0 é bem posterior por 
+esse ponto de vista.
+
+********************************************************************************************
