@@ -3,6 +3,7 @@
     public class Calculo
     {
         public int Mes { get; set; }
-        public decimal Valor { get; set; }
+        public double ValorBruto { get; set; }
+        public double ValorLiquido { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 
 namespace CalculoCDB.Controllers
 {
@@ -8,26 +9,28 @@ namespace CalculoCDB.Controllers
     public class CalculoCdbController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Calculo>>> Index(decimal? valor_inicial, int? num_meses)
+        public async Task<ActionResult<IEnumerable<Calculo>>> Index(double? valor_inicial, int? num_meses)
         {
 
             return CalculoCDB(valor_inicial, num_meses).ToList();
 
         }
 
-        public static List<Calculo> CalculoCDB(decimal? valor_inicial, int? num_meses)
+        public static List<Calculo> CalculoCDB(double? valor_inicial, int? num_meses)
         {
             List<Calculo> mesesCalculoCDB = new List<Calculo>();
 
             if (valor_inicial.HasValue)
             {
-                decimal valor_final = (decimal)valor_inicial;
-                decimal cdi = ValorCDI();
-                decimal tb = ValorTB();
+                double valor_final = (double)valor_inicial;
+                double cdi = ValorCDI();
+                double tb = ValorTB();
 
                 Calculo mesinicio = new Calculo();
                 mesinicio.Mes = 0;
-                mesinicio.Valor = valor_final;
+                mesinicio.ValorBruto = valor_final;
+                mesinicio.ValorLiquido = valor_final;
+
                 mesesCalculoCDB.Add(mesinicio);
                 for (int contador = 1; contador <= num_meses; contador++)
                 {
@@ -35,7 +38,9 @@ namespace CalculoCDB.Controllers
 
                     Calculo calculo = new Calculo();
                     calculo.Mes = contador;
-                    calculo.Valor = valor_final;
+                    calculo.ValorBruto = valor_final;
+                    calculo.ValorLiquido = valor_final - ((valor_final- (double)valor_inicial)* AliquotaImposto(contador));
+
                     mesesCalculoCDB.Add(calculo);
                 }
             }
@@ -43,16 +48,27 @@ namespace CalculoCDB.Controllers
             return mesesCalculoCDB;
         }
 
-        private static decimal ValorCDI()
+        private static double ValorCDI()
         {
-            decimal cdi = 0.9M / 100;
+            double cdi = (0.9 / 100);
             return cdi;
         }
 
-        private static decimal ValorTB()
+        private static double ValorTB()
         {
-            decimal tb = 108 / 100;
+            double tb = (108 / 100);
             return tb;
+        }
+
+        private static double AliquotaImposto(int mes)
+        {
+            if (mes <= 06)
+                return (22.5 / 100);
+            if (mes > 06 && mes <= 12)
+                return (20 / 100);
+            if (mes > 12 && mes <= 24)
+                return (17.5 / 100);
+            return (15 / 100);
         }
     }
 }

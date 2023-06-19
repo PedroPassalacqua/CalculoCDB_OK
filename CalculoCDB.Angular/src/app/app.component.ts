@@ -11,8 +11,8 @@ import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms
 
 export class AppComponent implements OnInit{
   public calculoForm:any=this.formBuilder.group({
-    valorControl: '',
-    mesesControl: ''
+    valorControl: [null,Validators.required],
+    mesesControl: [null,Validators.required],
   }); 
   tabelaCalculo!: Observable<calculo[]>;
   showtabela!:any;
@@ -21,12 +21,14 @@ export class AppComponent implements OnInit{
 
   ngOnInit():void{
     this.showtabela="";    
-  }
+  } 
       
   constructor(private formBuilder: FormBuilder, private calculocdbService:CalculocdbService){}
 
+
   calcular():void{
     this.valorinic=this.calculoForm.get('valorControl')?.value
+    if (this.valorinic)
     this.meses=this.calculoForm.get('mesesControl')?.value
     this.tabelaCalculo = this.calculocdbService.getcalculocdb(this.valorinic,this.meses);
     this.showtabela="mostra";
@@ -34,6 +36,7 @@ export class AppComponent implements OnInit{
 }
 
 export interface calculo{
-  mes:number
-  valor:number
+  mes:number,
+  valorBruto:number,
+  valorLiquido:number  
 }

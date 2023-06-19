@@ -10,7 +10,9 @@
     <tr>
       <td><input formControlName="valorControl" matTooltip="Informe o valor" matInput placeholder="Valor"> </td>
       <td><input formControlName="mesesControl" matTooltip="Informe os meses" matInput placeholder="Meses"> </td>
-      <td><input type="button" value="Calcular" (click)="calcular()"/></td>
+      <td>
+        <input type="button" value="Calcular" (click)="calcular()"/>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -19,20 +21,21 @@
 <br>
 <div *ngIf="showtabela=='mostra'; else noTabela">
   Resultado:
-  <table class="tabela">
+  <table class="tabela" width="500px">
     <thead>
-      <th>Mes</th>
-      <th>Valor Final</th>
-      <th></th>
+      <th style="border:1px;border-style: solid;">Mes</th>
+      <th style="border:1px;border-style: solid;">Bruto</th>
+      <th style="border:1px;border-style: solid;">Líquido</th>
     </thead>
     <tbody>
       <tr *ngFor="let calc of tabelaCalculo | async ">
-        <td>{{calc.mes}}</td>
-        <td style='text-align:"right"'>{{calc.valor.toFixed(2)}}</td>
+        <td style="border:1px;border-style: solid;">{{calc.mes}}</td>
+        <td style='border:1px;border-style: solid;text-align:"right"'>{{calc.valorBruto.toFixed(2)}}</td>
+        <td style='border:1px;border-style: solid;text-align:"right"'>{{calc.valorLiquido.toFixed(2)}}</td>
       </tr>
     </tbody>
   </table>
-</div>
+</div> 
 <ng-template #noTabela>
   <h1>nenhum resultado</h1>
 </ng-template>
