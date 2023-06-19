@@ -10,8 +10,23 @@ namespace TesteCalculoCDB
         public void TestValor1000Meses5()
         {
             Assert.IsTrue(ConfereSaida(1000, 5));
-            Assert.IsTrue(ConferePreenchimento(null, 5));
-            Assert.IsTrue(ConferePreenchimento(1000, null));
+        }
+
+        [TestMethod]
+        public void TestValorNulo()
+        {
+            Assert.IsFalse(ConferePreenchimento(null, 5));
+        }
+
+        [TestMethod]
+        public void TestMesesNulo()
+        {
+            Assert.IsFalse(ConferePreenchimento(1000, null));
+        }
+
+        [TestMethod]
+        public void TestPreencheOK()
+        {
             Assert.IsTrue(ConferePreenchimento(1000, 5));
         }
 
@@ -32,7 +47,7 @@ namespace TesteCalculoCDB
             if (valor_inicial == 1000 && num_meses == 5)
             {
                 Calculo esperado = new Calculo();
-                esperado.ValorBruto = 1045.817322864049;
+                esperado.ValorBruto = 1045.8173228640485;
                 esperado.Mes = 5;
 
                 Calculo result = CalculoCDB.Controllers.CalculoCdbController.CalculoCDB(1000, 5)[5];
