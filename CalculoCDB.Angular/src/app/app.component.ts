@@ -27,11 +27,19 @@ export class AppComponent implements OnInit{
 
 
   calcular():void{
-    this.valorinic=this.calculoForm.get('valorControl')?.value
-    if (this.valorinic)
-    this.meses=this.calculoForm.get('mesesControl')?.value
-    this.tabelaCalculo = this.calculocdbService.getcalculocdb(this.valorinic,this.meses);
-    this.showtabela="mostra";
+    this.valorinic=this.calculoForm.get('valorControl')?.value;
+    this.meses=this.calculoForm.get('mesesControl')?.value;
+    if (this.valorinic==0 || this.valorinic=='' || isNaN(Number(this.valorinic))){
+      alert('Valor inválido');
+    }else{
+      if (this.meses<2 || this.meses=='' || isNaN(Number(this.meses))){
+        alert('Numero de Meses inválido');
+      }
+      else{
+        this.tabelaCalculo = this.calculocdbService.getcalculocdb(this.valorinic,this.meses);
+        this.showtabela="mostra";
+      }
+    }
   }
 }
 

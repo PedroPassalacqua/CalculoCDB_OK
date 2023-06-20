@@ -25,13 +25,8 @@ namespace CalculoCDB.Controllers
                 double valor_final = (double)valor_inicial;
                 double cdi = ValorCDI();
                 double tb = ValorTB();
+                double aliq = 0;
 
-                Calculo mesinicio = new Calculo();
-                mesinicio.Mes = 0;
-                mesinicio.ValorBruto = valor_final;
-                mesinicio.ValorLiquido = valor_final;
-
-                mesesCalculoCDB.Add(mesinicio);
                 for (int contador = 1; contador <= num_meses; contador++)
                 {
                     valor_final = valor_final * (1 + (cdi * tb));
@@ -39,7 +34,8 @@ namespace CalculoCDB.Controllers
                     Calculo calculo = new Calculo();
                     calculo.Mes = contador;
                     calculo.ValorBruto = valor_final;
-                    calculo.ValorLiquido = valor_final - ((valor_final- (double)valor_inicial)* AliquotaImposto(contador));
+                    aliq = AliquotaImposto(contador);
+                    calculo.ValorLiquido = valor_final - ((double)valor_final * aliq);
 
                     mesesCalculoCDB.Add(calculo);
                 }
@@ -60,15 +56,30 @@ namespace CalculoCDB.Controllers
             return tb;
         }
 
-        private static double AliquotaImposto(int mes)
+        public static double AliquotaImposto(int mes)
         {
             if (mes <= 06)
-                return (22.5 / 100);
-            if (mes > 06 && mes <= 12)
-                return (20 / 100);
-            if (mes > 12 && mes <= 24)
-                return (17.5 / 100);
-            return (15 / 100);
+            { 
+                return (22.5 / 100); 
+            }
+            else
+            {
+                if (mes > 06 && mes <= 12)
+                { 
+                    return (20 / 100); 
+                }
+                else
+                {
+                    if (mes > 12 && mes <= 24)
+                    {
+                        return (17.5 / 100);
+                    }
+                    else
+                    {
+                        return 0.15;
+                    }
+                }
+            }
         }
     }
 }
