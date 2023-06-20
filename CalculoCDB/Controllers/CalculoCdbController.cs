@@ -35,7 +35,7 @@ namespace CalculoCDB.Controllers
                     calculo.Mes = contador;
                     calculo.ValorBruto = valor_final;
                     aliq = AliquotaImposto(contador);
-                    calculo.ValorLiquido = valor_final - ((double)valor_final * aliq);
+                    calculo.ValorLiquido = valor_final - (((double)valor_final- (double)valor_inicial) * aliq);
 
                     mesesCalculoCDB.Add(calculo);
                 }
@@ -46,13 +46,13 @@ namespace CalculoCDB.Controllers
 
         private static double ValorCDI()
         {
-            double cdi = (0.9 / 100);
+            double cdi = 0.009;
             return cdi;
         }
 
         private static double ValorTB()
         {
-            double tb = (108 / 100);
+            double tb = 1.08;
             return tb;
         }
 
@@ -60,19 +60,19 @@ namespace CalculoCDB.Controllers
         {
             if (mes <= 06)
             { 
-                return (22.5 / 100); 
+                return 0.225; 
             }
             else
             {
                 if (mes > 06 && mes <= 12)
                 { 
-                    return (20 / 100); 
+                    return 0.20; 
                 }
                 else
                 {
                     if (mes > 12 && mes <= 24)
                     {
-                        return (17.5 / 100);
+                        return 0.175;
                     }
                     else
                     {

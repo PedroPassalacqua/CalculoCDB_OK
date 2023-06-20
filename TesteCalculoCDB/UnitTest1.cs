@@ -53,7 +53,7 @@ namespace TesteCalculoCDB
             if (valor_inicial == 1000 && num_meses == 5)
             {
                 Calculo esperado = new Calculo();
-                esperado.ValorBruto = 1045.8173228640485;
+                esperado.ValorBruto = 1049.5540120180824;
                 esperado.Mes = 5;
 
                 Calculo result = CalculoCDB.Controllers.CalculoCdbController.CalculoCDB(1000, 5)[4];
@@ -114,7 +114,7 @@ namespace TesteCalculoCDB
 
                 Calculo result = CalculoCDB.Controllers.CalculoCdbController.CalculoCDB(1000, 5)[4];
 
-                if (result.ValorLiquido == ((esperado.ValorBruto - (double)esperado.ValorBruto) * CalculoCDB.Controllers.CalculoCdbController.AliquotaImposto(esperado.Mes)))
+                if (result.ValorLiquido == esperado.ValorBruto - (((double)esperado.ValorBruto - (double)valor_inicial) * CalculoCDB.Controllers.CalculoCdbController.AliquotaImposto((int)num_meses)))
                 {
                     return true;
                 }
