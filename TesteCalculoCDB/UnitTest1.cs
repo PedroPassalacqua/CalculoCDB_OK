@@ -38,7 +38,7 @@ namespace TesteCalculoCDB
 
         public bool ConferePreenchimento(double? valor_inicial, int? num_meses)
         {
-            if (!valor_inicial.HasValue || !num_meses.HasValue)
+            if (CalculoCDB.Controllers.CalculoCdbController.CalculoCDB(valor_inicial, num_meses).Count == 0)
             {
                 return false;
             }
