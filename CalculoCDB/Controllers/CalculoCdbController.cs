@@ -20,7 +20,7 @@ namespace CalculoCDB.Controllers
         {
             List<Calculo> mesesCalculoCDB = new List<Calculo>();
 
-            if (valor_inicial.HasValue & num_meses.HasValue)
+            if (valor_inicial.HasValue && valor_inicial>0 && num_meses.HasValue && num_meses>1)
             {
                 double valor_final = (double)valor_inicial;
                 double cdi = ValorCDI();
