@@ -1,6 +1,6 @@
 **************************************************************************
 
-             B3 - PROJETO DE AVALIAÇÃO PARA DESENVOLVEDOR
+             B3 - PROJETO DE AVALIAÃ‡ÃƒO PARA DESENVOLVEDOR
 
              Diretoria de Desenv. Sistemas de Middle e Back Office
              
@@ -17,41 +17,27 @@
 --------------------------------------------------------------------------
 
 
-INSTRUÇÕES PARA EXECUÇÃO DOS TESTES:
+INSTRUÃ‡Ã•ES PARA EXECUÃ‡ÃƒO DOS TESTES:
 
-1) Testes do Serviço
+1) Testes do ServiÃ§o
 
-- Rodar o projeto CalculoCDB no Visual Studio para subir o serviço
+- Rodar o projeto CalculoCDB no Visual Studio para subir o serviÃ§o
 
 - O Visual Studio deve abrir um browser com o teste pelo swagger
 
-- Para rodar os testes automatizados parar o debug do Visual Studio e executar a opção TEste>Executar todos os testes do menu
+- Para rodar os testes automatizados parar o debug do Visual Studio e executar a opÃ§Ã£o TEste>Executar todos os testes do menu
 
 2) Testes do app Angular
 
-- Abrir o Visual Studio Code e abrir a pasta CalculoCDB.Angular desta solução no Visual Studio Code 
+- Abrir o Visual Studio Code e abrir a pasta CalculoCDB.Angular desta soluÃ§Ã£o no Visual Studio Code 
 
-- Rodar o projeto CalculoCDB no Visual Studio para subir o serviço
+- Rodar o projeto CalculoCDB no Visual Studio para subir o serviÃ§o
 
 - Startar o Debug no Visual Studio Code (F5)
 
-- Aguarde a inicialização
+- Aguarde a inicializaÃ§Ã£o
 
-- utilizar a aplicação 
+- utilizar a aplicaÃ§Ã£o 
 
-- Para rodar os testes automatizados executar a opção Terminal>New Terminal e digitar o comando "npm test"
+- Para rodar os testes automatizados executar a opÃ§Ã£o Terminal>New Terminal e digitar o comando "npm test"
 
-
-********************************************************************************************
-
-        NOTAS DE DESENVOLVIMENTO
-
-Durante o desenvolvimento ocorre erro de integração necessitando habilitar o CORS. 
-Devido a isso desenvolvemos primeiramente o projeto API CalculoCDB em .NET 4.7.2, e depois 
-reimplementado em .NET 6.0, onde foi possível resolver o problema.
-Após o término, Ainda criei o projeto CalculoCDB.API em 4.7.2 para tentar habilitar o CORS 
-no 4.7.2 sem sucesso por falta de tempo e falta de informação disponível.
-Qualquer forma sendo aceita versão 4.7.2 ou superior, a versão .NET 6.0 é bem posterior por 
-esse ponto de vista.
-
-********************************************************************************************
